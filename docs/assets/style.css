@@ -239,6 +239,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 /* ── Code blocks ─────────────────────────────────────────────────────────── */
 
 .code-block {
+  display: block;
   background: var(--bg-0);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -250,6 +251,11 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   word-break: break-all;
   white-space: pre-wrap;
 }
+
+.example-card { margin-bottom: 12px; }
+.example-card:last-child { margin-bottom: 0; }
+.example-title { font-size: 12px; font-weight: 600; color: var(--text-1); margin-bottom: 3px; }
+.example-platform { font-size: 10px; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 5px; }
 
 .code-row {
   display: flex;

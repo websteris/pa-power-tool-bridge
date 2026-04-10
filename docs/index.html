@@ -80,12 +80,21 @@
           <a class="btn btn-primary" href="./install.html">Install the CLI Bridge →</a>
         </div>
         <div class="bridge-code">
-          <div class="code-label">Read the current flow (PowerShell)</div>
-          <code class="code-block">Get-Content "$env:TEMP\pa-power-tool\current-flow.json"</code>
-          <div class="code-label" style="margin-top:14px">Trigger a save (PowerShell)</div>
-          <code class="code-block">'{"command":"save"}' | Set-Content "$env:TEMP\pa-power-tool\commands.json"</code>
-          <div class="code-label" style="margin-top:14px">Read the current flow (bash)</div>
-          <code class="code-block">cat "$TMPDIR/pa-power-tool/current-flow.json"</code>
+          <div class="example-card">
+            <div class="example-title">Read the current flow</div>
+            <div class="example-platform">PowerShell</div>
+            <code class="code-block">Get-Content "$env:TEMP\pa-power-tool\current-flow.json"</code>
+          </div>
+          <div class="example-card">
+            <div class="example-title">Read the current flow</div>
+            <div class="example-platform">bash / zsh</div>
+            <code class="code-block">cat "$TMPDIR/pa-power-tool/current-flow.json"</code>
+          </div>
+          <div class="example-card">
+            <div class="example-title">Trigger a save</div>
+            <div class="example-platform">PowerShell</div>
+            <code class="code-block">'{"command":"save"}' | Set-Content "$env:TEMP\pa-power-tool\commands.json"</code>
+          </div>
         </div>
       </div>
     </section>

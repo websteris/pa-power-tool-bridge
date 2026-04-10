@@ -4,11 +4,11 @@
 # to local files for scripting and AI integration.
 #
 # One-liner install:
-#   curl -fsSL https://raw.githubusercontent.com/websteris/pa-power-tool-extension/main/install.sh | bash -s <extension-id>
+#   curl -fsSL https://raw.githubusercontent.com/websteris/pa-power-tool-bridge/main/install.sh | bash -s <extension-id>
 
 set -e
 
-REPO="https://raw.githubusercontent.com/websteris/pa-power-tool-extension/main"
+REPO="https://raw.githubusercontent.com/websteris/pa-power-tool-bridge/main"
 INSTALL_DIR="$HOME/.local/share/pa-power-tool"
 HOST_NAME="com.powerautomate.powertool.host"
 HOST_CJS="$INSTALL_DIR/host.cjs"

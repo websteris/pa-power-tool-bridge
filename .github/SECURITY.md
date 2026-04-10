@@ -2,7 +2,7 @@
 
 ## Reporting a Vulnerability
 
-Please report security vulnerabilities by opening a [GitHub Issue](https://github.com/websteris/pa-power-tool-extension/issues).
+Please report security vulnerabilities by opening a [GitHub Issue](https://github.com/websteris/pa-power-tool-bridge/issues).
 
 For sensitive issues that should not be disclosed publicly, use GitHub's private vulnerability reporting:
 **Security → Report a vulnerability** on the repository page.

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Native Messaging Host for Power Automate Power Tool
 // Bridges the Chrome/Edge extension to the local file system.
-// Install with the one-liner at: https://websteris.github.io/pa-power-tool-extension/install.html
+// Install with the one-liner at: https://websteris.github.io/pa-power-tool-bridge/install.html
 
 "use strict";
 

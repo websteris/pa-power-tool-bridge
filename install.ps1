@@ -3,11 +3,11 @@
 # to local files for scripting and AI integration.
 #
 # One-liner install:
-#   powershell -ExecutionPolicy Bypass -Command "irm https://raw.githubusercontent.com/websteris/pa-power-tool-extension/main/install.ps1 | iex"
+#   powershell -ExecutionPolicy Bypass -Command "irm https://raw.githubusercontent.com/websteris/pa-power-tool-bridge/main/install.ps1 | iex"
 
 param([string]$ExtensionId = "")
 
-$Repo        = "https://raw.githubusercontent.com/websteris/pa-power-tool-extension/main"
+$Repo        = "https://raw.githubusercontent.com/websteris/pa-power-tool-bridge/main"
 $InstallDir  = "$env:LOCALAPPDATA\pa-power-tool"
 $HostName    = "com.powerautomate.powertool.host"
 $HostCjs     = "$InstallDir\host.cjs"

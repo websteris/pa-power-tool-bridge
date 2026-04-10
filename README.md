@@ -28,17 +28,17 @@ Once installed, files are written to a local temp directory:
 
 **Windows (PowerShell):**
 ```powershell
-powershell -ExecutionPolicy Bypass -Command "irm https://raw.githubusercontent.com/websteris/pa-power-tool-extension/main/install.ps1 | iex"
+powershell -ExecutionPolicy Bypass -Command "irm https://raw.githubusercontent.com/websteris/pa-power-tool-bridge/main/install.ps1 | iex"
 ```
 
 **macOS / Linux:**
 ```bash
-curl -fsSL https://raw.githubusercontent.com/websteris/pa-power-tool-extension/main/install.sh | bash -s <extension-id>
+curl -fsSL https://raw.githubusercontent.com/websteris/pa-power-tool-bridge/main/install.sh | bash -s <extension-id>
 ```
 
 Your extension ID is shown in the extension's Help panel and on the Setup page (`chrome://extensions` or `edge://extensions` with Developer mode enabled).
 
-Full installation guide: **[websteris.github.io/pa-power-tool-extension/install.html](https://websteris.github.io/pa-power-tool-extension/install.html)**
+Full installation guide: **[websteris.github.io/pa-power-tool-bridge/install.html](https://websteris.github.io/pa-power-tool-bridge/install.html)**
 
 ### Send commands
 

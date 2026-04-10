@@ -1,0 +1,34 @@
+name: Validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Check host.cjs syntax
+        run: node --check host.cjs
+
+      - name: Verify install scripts are present and executable
+        run: |
+          test -f install.sh && echo "install.sh present"
+          test -x install.sh && echo "install.sh executable"
+          test -f install.ps1 && echo "install.ps1 present"
+
+      - name: Smoke-test host script (no stdin)
+        run: |
+          timeout 2 node host.cjs || code=$?
+          # host exits 0 when stdin closes; timeout gives exit 124 — both are fine
+          if [ "${code:-0}" -ne 124 ] && [ "${code:-0}" -ne 0 ]; then
+            echo "Unexpected exit code: $code" && exit 1
+          fi

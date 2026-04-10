@@ -1,0 +1,7 @@
+{
+  "name": "com.powerautomate.powertool.host",
+  "description": "Power Automate Power Tool native messaging host",
+  "path": "",
+  "type": "stdio",
+  "allowed_origins": []
+}

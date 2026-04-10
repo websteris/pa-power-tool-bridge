@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CLI Bridge Installation — Power Automate Power Tool</title>
+  <meta name="description" content="Install the Power Automate Power Tool CLI Bridge to let scripts and Claude read and write your flow definitions.">
+  <link rel="stylesheet" href="./assets/style.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="nav-back" href="./index.html">← Power Automate Power Tool</a>
+      <a class="nav-link" href="https://github.com/websteris/pa-power-tool-extension" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </nav>
+
+  <div class="page">
+
+    <div class="install-header">
+      <h1>CLI Bridge Installation</h1>
+      <p>
+        Allow scripts, Claude, and other tools to read and write your Power Automate flow
+        definitions without copy-paste — all via simple local files.
+      </p>
+    </div>
+
+    <div class="install-body">
+
+      <!-- Requirements -->
+      <div class="install-section">
+        <h2>Requirements</h2>
+        <div class="req-row">
+          <span class="req-name">Node.js 16+</span>
+          <span class="req-desc">
+            Required to run the host process.
+            Install from <a href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a>
+            or via <a href="https://github.com/nvm-sh/nvm" target="_blank" rel="noopener">nvm</a> /
+            <a href="https://volta.sh" target="_blank" rel="noopener">Volta</a>.
+          </span>
+        </div>
+        <div class="req-row">
+          <span class="req-name">Extension ID</span>
+          <span class="req-desc">
+            Find it at <code>chrome://extensions</code> or <code>edge://extensions</code>
+            with Developer mode enabled — or in the extension's Help panel.
+          </span>
+        </div>
+      </div>
+
+      <!-- OS Tabs -->
+      <div class="install-section">
+        <h2>Install</h2>
+
+        <div class="os-tabs" role="tablist">
+          <div class="os-tab" role="tab" data-os="windows" onclick="switchOS('windows')">Windows</div>
+          <div class="os-tab" role="tab" data-os="mac"     onclick="switchOS('mac')">macOS</div>
+          <div class="os-tab" role="tab" data-os="linux"   onclick="switchOS('linux')">Linux</div>
+        </div>
+
+        <!-- Windows -->
+        <div class="os-panel" id="panel-windows">
+          <p style="font-size:13px;color:var(--text-2);margin-bottom:16px">
+            Run this one-liner in PowerShell. The installer will prompt for your extension ID.
+          </p>
+          <div class="code-row">
+            <code class="code-block" id="cmd-windows">powershell -ExecutionPolicy Bypass -Command "irm https://raw.githubusercontent.com/websteris/pa-power-tool-extension/main/install.ps1 | iex"</code>
+            <button class="copy-btn" onclick="copy('cmd-windows', this)">Copy</button>
+          </div>
+          <p class="note">
+            The bridge installs to <code>%LOCALAPPDATA%\pa-power-tool\</code> and registers
+            a native messaging host for both Chrome and Edge.
+          </p>
+        </div>
+
+        <!-- macOS -->
+        <div class="os-panel" id="panel-mac">
+          <p style="font-size:13px;color:var(--text-2);margin-bottom:16px">
+            Run this one-liner in Terminal, replacing <code>&lt;extension-id&gt;</code> with your ID.
+          </p>
+          <div class="code-row">
+            <code class="code-block" id="cmd-mac">curl -fsSL https://raw.githubusercontent.com/websteris/pa-power-tool-extension/main/install.sh | bash -s &lt;extension-id&gt;</code>
+            <button class="copy-btn" onclick="copy('cmd-mac', this)">Copy</button>
+          </div>
+          <p class="note">
+            The bridge installs to <code>~/.local/share/pa-power-tool/</code> and registers
+            a native messaging host for Chrome, Edge, and Brave.
+          </p>
+        </div>
+
+        <!-- Linux -->
+        <div class="os-panel" id="panel-linux">
+          <p style="font-size:13px;color:var(--text-2);margin-bottom:16px">
+            Run this one-liner in your terminal, replacing <code>&lt;extension-id&gt;</code> with your ID.
+          </p>
+          <div class="code-row">
+            <code class="code-block" id="cmd-linux">curl -fsSL https://raw.githubusercontent.com/websteris/pa-power-tool-extension/main/install.sh | bash -s &lt;extension-id&gt;</code>
+            <button class="copy-btn" onclick="copy('cmd-linux', this)">Copy</button>
+          </div>
+          <p class="note">
+            The bridge installs to <code>~/.local/share/pa-power-tool/</code> and registers
+            a native messaging host for Chrome, Edge, and Brave.
+          </p>
+        </div>
+      </div>
+
+      <!-- After install -->
+      <div class="install-section">
+        <h2>After installation</h2>
+        <p style="font-size:13px;color:var(--text-2);margin-bottom:12px">
+          The bridge connects automatically within a few seconds — no browser reload needed.
+          The status indicator in the extension's Help panel will turn green when connected.
+        </p>
+        <p style="font-size:13px;color:var(--text-2)">
+          Files are written to your system temp directory:
+        </p>
+        <table class="files-table" style="margin-top:12px">
+          <tr>
+            <td>current-flow.json</td>
+            <td>Full flow definition, updated on open and save</td>
+          </tr>
+          <tr>
+            <td>status.json</td>
+            <td>Live state, errors, and last saved time</td>
+          </tr>
+          <tr>
+            <td>commands.json</td>
+            <td>Write a command here to control the extension</td>
+          </tr>
+        </table>
+        <p class="note" style="margin-top:12px">
+          Windows: <code>%TEMP%\pa-power-tool\</code> &nbsp;·&nbsp;
+          macOS: <code>$TMPDIR/pa-power-tool/</code> &nbsp;·&nbsp;
+          Linux: <code>/tmp/pa-power-tool/</code>
+        </p>
+      </div>
+
+      <!-- Commands -->
+      <div class="install-section">
+        <h2>Send commands</h2>
+
+        <div class="code-label" style="margin-bottom:4px">PowerShell</div>
+        <div class="code-row">
+          <code class="code-block" id="cmd-ps-save">'{"command":"save"}' | Set-Content "$env:TEMP\pa-power-tool\commands.json"</code>
+          <button class="copy-btn" onclick="copy('cmd-ps-save', this)">Copy</button>
+        </div>
+
+        <div class="code-label" style="margin-top:14px;margin-bottom:4px">bash / zsh</div>
+        <div class="code-row">
+          <code class="code-block" id="cmd-sh-save">echo '{"command":"save"}' > "$TMPDIR/pa-power-tool/commands.json"</code>
+          <button class="copy-btn" onclick="copy('cmd-sh-save', this)">Copy</button>
+        </div>
+
+        <div style="margin-top:20px">
+          <table class="files-table">
+            <tr><td>getJson</td><td>Write current editor content to <code>current-flow.json</code></td></tr>
+            <tr><td>save</td><td>Save the current flow to Power Automate</td></tr>
+            <tr><td>run</td><td>Run with last inputs</td></tr>
+            <tr><td>reload</td><td>Reload flow definition from the server</td></tr>
+            <tr><td>setJson</td><td>Replace editor content — include <code>"json"</code> field with the new definition</td></tr>
+            <tr><td>setJsonAndSave</td><td>Replace content and immediately save to Power Automate</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Troubleshooting -->
+      <div class="install-section">
+        <h2>Troubleshooting</h2>
+        <ul>
+          <li>If the bridge doesn't connect, reload the extension from <code>chrome://extensions</code> or <code>edge://extensions</code>.</li>
+          <li>Check the log file for errors: <code>%TEMP%\pa-power-tool\host.log</code> (Windows) or <code>$TMPDIR/pa-power-tool/host.log</code> (macOS/Linux).</li>
+          <li>If Node.js was installed after the bridge, re-run the installer so the host can locate it.</li>
+          <li>Open an <a href="https://github.com/websteris/pa-power-tool-extension/issues" target="_blank" rel="noopener">issue on GitHub</a> if you're still stuck.</li>
+        </ul>
+      </div>
+
+    </div><!-- /install-body -->
+  </div><!-- /page -->
+
+  <footer class="footer">
+    <a href="./index.html">Home</a>
+    <span class="sep">·</span>
+    <a href="https://github.com/websteris/pa-power-tool-extension" target="_blank" rel="noopener">GitHub</a>
+    <span class="sep">·</span>
+    <a href="https://github.com/websteris/pa-power-tool-extension/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
+  </footer>
+
+  <script>
+    function detectOS() {
+      const ua = navigator.userAgent;
+      if (ua.includes('Windows')) return 'windows';
+      if (ua.includes('Mac'))     return 'mac';
+      return 'linux';
+    }
+
+    function switchOS(os) {
+      document.querySelectorAll('.os-tab').forEach(t => t.classList.toggle('active', t.dataset.os === os));
+      document.querySelectorAll('.os-panel').forEach(p => p.classList.toggle('active', p.id === 'panel-' + os));
+    }
+
+    function copy(id, btn) {
+      const text = document.getElementById(id).textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+      });
+    }
+
+    switchOS(detectOS());
+  </script>
+
+</body>
+</html>

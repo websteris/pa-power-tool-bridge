@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Power Automate Power Tool</title>
+  <meta name="description" content="A Monaco-powered JSON editor for Microsoft Power Automate flows — built as a browser extension for Chrome and Edge.">
+  <link rel="stylesheet" href="./assets/style.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <span class="nav-logo">Power Automate Power Tool</span>
+      <a class="nav-link" href="https://github.com/websteris/pa-power-tool-extension" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </nav>
+
+  <div class="page">
+
+    <!-- Hero -->
+    <section class="hero">
+      <h1>Power Automate Power Tool</h1>
+      <p class="tagline">
+        A professional JSON editor for Microsoft Power Automate flows —
+        live save, flow tree navigation, smart rename, and a CLI bridge for scripting and AI integration.
+      </p>
+      <div class="store-buttons">
+        <a class="btn btn-store disabled" href="#" aria-disabled="true" tabindex="-1">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm3.5 7.5h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0v3h3a.5.5 0 0 1 0 1z"/>
+          </svg>
+          Add to Chrome
+          <span class="badge">Coming soon</span>
+        </a>
+        <a class="btn btn-store disabled" href="#" aria-disabled="true" tabindex="-1">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm3.5 7.5h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0v3h3a.5.5 0 0 1 0 1z"/>
+          </svg>
+          Add to Edge
+          <span class="badge">Coming soon</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+      <div class="section-label">Features</div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>Monaco Editor</h3>
+          <p>The same editor powering VS Code. Full JSON editing with syntax highlighting, bracket matching, and inline schema validation.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Live Save</h3>
+          <p>Changes are patched directly to the Power Automate API — no page reloads, no copy-paste workflows.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Flow Tree</h3>
+          <p>Visual tree of all actions in your flow. Click any node to jump to it in the editor instantly.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Smart Rename</h3>
+          <p>Press F2 on any action key to rename it everywhere — updates <code>runAfter</code> dependencies and expressions automatically.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLI Bridge -->
+    <section class="bridge-section">
+      <div class="bridge-inner">
+        <div class="bridge-text">
+          <div class="section-label">CLI Bridge</div>
+          <h2>Automate your flow editing</h2>
+          <p>
+            The CLI Bridge lets scripts, Claude, and other tools read the current flow
+            definition, watch for errors, and send commands directly to the extension —
+            all via simple local files. No API keys, no authentication.
+          </p>
+          <a class="btn btn-primary" href="./install.html">Install the CLI Bridge →</a>
+        </div>
+        <div class="bridge-code">
+          <div class="code-label">Read the current flow (PowerShell)</div>
+          <code class="code-block">Get-Content "$env:TEMP\pa-power-tool\current-flow.json"</code>
+          <div class="code-label" style="margin-top:14px">Trigger a save (PowerShell)</div>
+          <code class="code-block">'{"command":"save"}' | Set-Content "$env:TEMP\pa-power-tool\commands.json"</code>
+          <div class="code-label" style="margin-top:14px">Read the current flow (bash)</div>
+          <code class="code-block">cat "$TMPDIR/pa-power-tool/current-flow.json"</code>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /page -->
+
+  <footer class="footer">
+    <a href="https://github.com/websteris/pa-power-tool-extension" target="_blank" rel="noopener">GitHub</a>
+    <span class="sep">·</span>
+    <a href="https://github.com/websteris/pa-power-tool-extension/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
+  </footer>
+
+</body>
+</html>
